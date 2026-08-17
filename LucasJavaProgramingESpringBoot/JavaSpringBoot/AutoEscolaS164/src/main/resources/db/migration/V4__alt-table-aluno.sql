@@ -1,0 +1,1 @@
+ALTER TABLE  aluno add ativo tinyint DEFAULT 1;
