@@ -5,7 +5,7 @@
 //public class HashGenerator {
 //    static void main(String[] args) {
 //        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-//        String hash = encoder.encode("admin");
+//        String hash = encoder.encode("user");
 //        System.out.println(hash);
 //    }
 //}

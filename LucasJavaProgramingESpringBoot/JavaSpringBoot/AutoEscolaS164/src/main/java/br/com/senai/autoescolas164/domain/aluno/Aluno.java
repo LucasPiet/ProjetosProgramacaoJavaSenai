@@ -18,10 +18,11 @@ public class Aluno {
     private String email;
     private String telefone;
     private String cpf;
+    private boolean ativo = true;
 
     @Embedded
     private Endereco endereco;
-    private boolean ativo;
+
 
     public Aluno(DadosCadastroAluno dados) {
         this.nome = dados.nome();
@@ -34,7 +35,9 @@ public class Aluno {
 
 
     public void excluir() {
+
         this.ativo = false;
+
     }
 
 

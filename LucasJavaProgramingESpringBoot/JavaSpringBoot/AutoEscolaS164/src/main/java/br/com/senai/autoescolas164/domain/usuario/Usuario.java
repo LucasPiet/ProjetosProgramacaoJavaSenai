@@ -1,9 +1,7 @@
 package br.com.senai.autoescolas164.domain.usuario;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -28,10 +26,19 @@ public class Usuario implements UserDetails {
     private long id;
     private  String login;
     private String senha;
+    private boolean ativo = true;
+
+    @Enumerated(EnumType.STRING)
+    private Role perfil = Role.valueOf("USER");
+
+    public Usuario(@Valid DadosCadastroUsuario dados) {
+        this.login = dados.login();
+        this.senha = dados.senha();
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLER_USER"));
+        return List.of(new SimpleGrantedAuthority("ROLE_"+perfil.name()));
     }
 
     @Override
@@ -66,5 +73,14 @@ public class Usuario implements UserDetails {
     public boolean isEnabled() {
         UserDetails.super.isEnabled();
         return true;
+    }
+
+    public void atualizar(@Valid DadosAtualizarSenhaUsuario dados) {
+        if (dados.senha() != null && !dados.senha().isBlank()) {
+            this.senha = dados.senha();
+        }
+    }
+    public void excluir (){
+        this.ativo = false;
     }
 }

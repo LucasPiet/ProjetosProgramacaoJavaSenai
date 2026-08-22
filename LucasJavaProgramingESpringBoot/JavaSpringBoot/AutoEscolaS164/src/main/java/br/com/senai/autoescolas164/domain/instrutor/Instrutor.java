@@ -18,13 +18,14 @@ public class Instrutor {
     private String email;
     private String telefone;
     private String cnh;
+    private boolean ativo = true;
 
     @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
 
     @Embedded
     private Endereco endereco;
-    private boolean ativo;
+
 
     public Instrutor(DadosCadastroInstrutor dados) {
         this.nome = dados.nome();

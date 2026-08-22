@@ -9,7 +9,8 @@ public record DadosDetalhamentoInstrutor(
         String telefone,
         String cnh,
         Especialidade especialidade,
-        Endereco endereco) {
+        Endereco endereco,
+        boolean ativo ) {
     public DadosDetalhamentoInstrutor(Instrutor instrutor) {
         this(
                 instrutor.getId(),
@@ -18,7 +19,8 @@ public record DadosDetalhamentoInstrutor(
                 instrutor.getTelefone(),
                 instrutor.getCnh(),
                 instrutor.getEspecialidade(),
-                instrutor.getEndereco()
+                instrutor.getEndereco(),
+                instrutor.isAtivo()
         );
     }
 }
