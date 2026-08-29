@@ -6,18 +6,23 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@RequiredArgsConstructor
+@Service
 public class UsuarioService {
-    @RequiredArgsConstructor
-    @Service
-    public class InstrutorService {
+
         private final UsuarioRepository repository;
 
         @Transactional
-        public DadosDetalhamentoUsuario cadastraInstrutor (DadosCadastroUsuario dados){
-            var usuario = new Usuario(dados);
+        public DadosDetalhamentoUsuario cadastraUsario (DadosCadastroUsuario dados){
+            String hash = DadoscryptografarSenha(dados.senha());
+            var usuario = new Usuario(
+                    dados.login(),
+                    dados.senha(hash)
+            );
             Usuario salve = repository.save(usuario);
             return new DadosDetalhamentoUsuario(salve);
         }
@@ -36,8 +41,9 @@ public class UsuarioService {
         }
         @Transactional
         public @Nullable DadosDetalhamentoUsuario atulizarSenhaUsuario(@Valid DadosAtualizarSenhaUsuario dados) {
+            String hash = DadoscryptografarSenha(dados.senha());
             Usuario usuario = repository.findById(dados.id()).orElseThrow(()-> new RuntimeException("Id do Usuario não localizado"));
-            usuario.atualizar(dados);
+            usuario.atualizarSenha(dados.id(),dados.senha(hash));
             Usuario salvo = repository.save(usuario);
             return new DadosDetalhamentoUsuario(salvo);
         }
@@ -47,11 +53,16 @@ public class UsuarioService {
             usuario.excluir();
             repository.save(usuario);
         }
-        public @Nullable DadosDetalhamentoUsuario atulizarPerfilUsuario(@Valid DadosAtualizarSenhaUsuario dados) {
+        public @Nullable DadosDetalhamentoUsuario atulizarPerfilUsuario(@Valid DadosAtualizarPerfilUsuario dados) {
             Usuario usuario = repository.findById(dados.id()).orElseThrow(()-> new RuntimeException("Id do Usuario não localizado"));
-            usuario.atualizar(dados);
+            usuario.atualizarPerfil(dados);
             Usuario salvo = repository.save(usuario);
             return new DadosDetalhamentoUsuario(salvo);
         }
-    }
+        public String DadoscryptografarSenha (String senha){
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            String hash = encoder.encode(senha);
+            return hash;
+        }
 }
+

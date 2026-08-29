@@ -12,5 +12,9 @@ public record DadosCadastroUsuario (
 
     ){
 
+    public @NotBlank String senha(String hash) {
+
+        return hash;
+    }
 }
 
