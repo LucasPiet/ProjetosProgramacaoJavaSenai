@@ -1,0 +1,27 @@
+package br.com.senai.autoescolas164.adapter.in.controller.response.aluno;
+
+import br.com.senai.autoescolas164.aplication.core.domain.Aluno;
+import br.com.senai.autoescolas164.shared.vo.endereco.Endereco;
+
+public record DadosDetalhamentoAluno(
+        Long id,
+        String nome,
+        String email,
+        String Telefone,
+        String cpf,
+        Endereco endereco,
+        boolean ativo
+) {
+    public DadosDetalhamentoAluno (Aluno aluno){
+        this(
+                aluno.getId(),
+                aluno.getNome(),
+                aluno.getEmail(),
+                aluno.getTelefone(),
+                aluno.getCpf(),
+                aluno.getEndereco(),
+                aluno.isAtivo()
+
+        );
+    }
+}

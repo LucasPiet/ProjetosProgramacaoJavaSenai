@@ -1,0 +1,20 @@
+package br.com.senai.autoescolas164.adapter.in.controller.request.usuario;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+public record DadosCadastroUsuario (
+    @NotNull
+    String login,
+
+    @NotBlank
+    String senha
+
+    ){
+
+    public @NotBlank String senha(String hash) {
+
+        return hash;
+    }
+}
+
