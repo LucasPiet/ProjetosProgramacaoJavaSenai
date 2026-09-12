@@ -4,7 +4,7 @@ import br.com.senai.autoescolas164.adapter.in.controller.request.instrucao.Dados
 import br.com.senai.autoescolas164.adapter.in.controller.response.instrucao.DadosDetalhamentosAgendamento;
 import br.com.senai.autoescolas164.exception.type.ValidacaoException;
 import br.com.senai.autoescolas164.exception.type.InstrutorNotFoundException;
-import br.com.senai.autoescolas164.aplication.service.AgendaDeInstrucao;
+import br.com.senai.autoescolas164.application.service.AgendaDeInstrucao;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

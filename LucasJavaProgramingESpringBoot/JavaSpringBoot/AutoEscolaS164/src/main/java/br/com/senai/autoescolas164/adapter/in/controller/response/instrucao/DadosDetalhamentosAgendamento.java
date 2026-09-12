@@ -1,6 +1,6 @@
 package br.com.senai.autoescolas164.adapter.in.controller.response.instrucao;
 
-import br.com.senai.autoescolas164.aplication.core.domain.Instrucao;
+import br.com.senai.autoescolas164.application.core.domain.Instrucao;
 import br.com.senai.autoescolas164.shared.vo.enums.Especialidade;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;

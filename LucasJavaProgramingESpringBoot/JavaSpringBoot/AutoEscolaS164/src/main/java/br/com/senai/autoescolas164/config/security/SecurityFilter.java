@@ -1,6 +1,6 @@
 package br.com.senai.autoescolas164.config.security;
 
-import br.com.senai.autoescolas164.aplication.port.out.UsuarioRepository;
+import br.com.senai.autoescolas164.application.port.out.UsuarioRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

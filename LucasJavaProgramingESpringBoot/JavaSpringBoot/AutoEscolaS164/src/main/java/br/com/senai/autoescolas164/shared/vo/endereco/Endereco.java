@@ -19,7 +19,14 @@ public class Endereco {
     public Endereco() {
     }
 
-    public Endereco(String logradouro, String numero, String complemento, String bairro, String cidade, String uf, String cep) {
+    public Endereco(
+            String logradouro,
+            String numero,
+            String complemento,
+            String bairro,
+            String cidade,
+            String uf,
+            String cep) {
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
@@ -57,8 +64,15 @@ public class Endereco {
         return cep;
     }
 
-    public void atualizar(String Logradouro, String nume, String complemento, String bairro, String cidade, String uf, String cep) {
-        if (logradouro!= null && !logradouro.isBlank()) {
+    public void atualizar(
+            String logradouro,
+            String numero,
+            String complemento,
+            String bairro,
+            String cidade,
+            String uf,
+            String cep) {
+        if (logradouro != null && !logradouro.isBlank()) {
             this.logradouro = logradouro;
         }
         if (numero != null) {
@@ -80,4 +94,5 @@ public class Endereco {
             this.cep = cep;
         }
     }
+
 }

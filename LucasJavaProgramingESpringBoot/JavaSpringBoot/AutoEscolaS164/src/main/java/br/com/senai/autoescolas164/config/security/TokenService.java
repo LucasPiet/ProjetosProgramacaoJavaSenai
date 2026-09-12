@@ -1,6 +1,6 @@
 package br.com.senai.autoescolas164.config.security;
 
-import br.com.senai.autoescolas164.aplication.core.domain.Usuario;
+import br.com.senai.autoescolas164.application.core.domain.Usuario;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;

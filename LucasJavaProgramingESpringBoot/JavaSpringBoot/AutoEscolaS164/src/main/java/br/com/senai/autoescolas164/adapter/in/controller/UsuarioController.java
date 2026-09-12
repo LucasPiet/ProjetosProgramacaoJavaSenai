@@ -5,7 +5,7 @@ import br.com.senai.autoescolas164.adapter.in.controller.request.usuario.DadosAt
 import br.com.senai.autoescolas164.adapter.in.controller.request.usuario.DadosCadastroUsuario;
 import br.com.senai.autoescolas164.adapter.in.controller.response.usuario.DadosDetalhamentoUsuario;
 import br.com.senai.autoescolas164.adapter.in.controller.response.usuario.DadosListagemUsuario;
-import br.com.senai.autoescolas164.aplication.service.UsuarioService;
+import br.com.senai.autoescolas164.application.service.UsuarioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

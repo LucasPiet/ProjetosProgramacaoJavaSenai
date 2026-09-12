@@ -1,7 +1,7 @@
 package br.com.senai.autoescolas164.adapter.out.repository.mapper;
 
 import br.com.senai.autoescolas164.adapter.out.repository.entity.InstrutorEntity;
-import br.com.senai.autoescolas164.aplication.core.domain.Instrutor;
+import br.com.senai.autoescolas164.application.core.domain.Instrutor;
 import org.springframework.stereotype.Component;
 
 @Component

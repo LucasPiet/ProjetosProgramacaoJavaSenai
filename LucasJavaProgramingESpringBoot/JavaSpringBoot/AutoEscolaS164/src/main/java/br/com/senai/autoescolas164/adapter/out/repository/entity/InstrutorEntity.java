@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
+
 
 @Entity(name = "Instrutor")
 @Table(name = "instrutores")

@@ -1,7 +1,7 @@
 package br.com.senai.autoescolas164.adapter.in.controller;
 
 import br.com.senai.autoescolas164.adapter.in.controller.request.usuario.DadosLogin;
-import br.com.senai.autoescolas164.aplication.core.domain.Usuario;
+import br.com.senai.autoescolas164.application.core.domain.Usuario;
 import br.com.senai.autoescolas164.config.security.TokenService;
 import br.com.senai.autoescolas164.config.security.dadostokenJWT;
 import jakarta.validation.Valid;

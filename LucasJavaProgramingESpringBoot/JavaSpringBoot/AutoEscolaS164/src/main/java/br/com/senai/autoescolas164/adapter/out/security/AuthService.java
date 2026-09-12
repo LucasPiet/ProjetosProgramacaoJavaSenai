@@ -1,6 +1,6 @@
 package br.com.senai.autoescolas164.adapter.out.security;
 
-import br.com.senai.autoescolas164.aplication.port.out.UsuarioRepository;
+import br.com.senai.autoescolas164.application.port.out.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -2,9 +2,14 @@ package br.com.senai.autoescolas164.adapter.in.controller;
 
 import br.com.senai.autoescolas164.adapter.in.controller.request.aluno.DadosAtualizacaoAluno;
 import br.com.senai.autoescolas164.adapter.in.controller.request.aluno.DadosCadastroAluno;
+import br.com.senai.autoescolas164.adapter.in.controller.request.instrutor.DadosAtualizacaoInstrutor;
+import br.com.senai.autoescolas164.adapter.in.controller.request.instrutor.DadosCadastroInstrutor;
 import br.com.senai.autoescolas164.adapter.in.controller.response.aluno.DadosListagemAluno;
 import br.com.senai.autoescolas164.adapter.in.controller.response.aluno.DadosDetalhamentoAluno;
-import br.com.senai.autoescolas164.aplication.service.AlunoService;
+import br.com.senai.autoescolas164.adapter.in.controller.response.instrutor.DadosDetalhamentoInstrutor;
+import br.com.senai.autoescolas164.adapter.in.controller.response.instrutor.DadosListagemInstrutor;
+import br.com.senai.autoescolas164.application.port.in.StdFeaturePort;
+import br.com.senai.autoescolas164.application.service.AlunoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -19,13 +24,22 @@ import java.net.URI;
 @RestController
 @RequestMapping("/alunos")
 @RequiredArgsConstructor
-public class AlunoController {
+public class AlunoController implements StdFeaturePort<
+        DadosCadastroAluno,
+        DadosListagemAluno,
+        DadosAtualizacaoAluno,
+        Void,
+        DadosDetalhamentoAluno,
+        UriComponentsBuilder,
+        Long,
+        Pageable
+        > {
 
     private final AlunoService service;
 
     @PostMapping
     @PreAuthorize("hasAnyRole('ADMIN')")
-    public ResponseEntity<DadosDetalhamentoAluno> cadastraAluno
+    public ResponseEntity<DadosDetalhamentoAluno> cadastrar
             (@RequestBody @Valid DadosCadastroAluno dados,
              UriComponentsBuilder uriBuilder){
         DadosDetalhamentoAluno dto = service.cadastrarAluno(dados);
@@ -35,25 +49,25 @@ public class AlunoController {
     }
     @GetMapping
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public ResponseEntity<Page<DadosListagemAluno>> listarAlunos(
+    public ResponseEntity<Page<DadosListagemAluno>> listar(
             @PageableDefault ( size = 10, sort = "nome")
             Pageable paginacao){
         return ResponseEntity.ok(service.ListarAluno(paginacao));
     }
     @PutMapping
     @PreAuthorize("hasAnyRole('ADMIN')")
-    public ResponseEntity<DadosDetalhamentoAluno> atualizarAluno (@RequestBody @Valid DadosAtualizacaoAluno dados){
+    public ResponseEntity<DadosDetalhamentoAluno> atualizar (@RequestBody @Valid DadosAtualizacaoAluno dados){
         return  ResponseEntity.ok(service.atualizarAluno(dados));
     }
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyRole('ADMIN')")
-    public ResponseEntity<DadosDetalhamentoAluno> detalharAluno(@PathVariable Long id) {
+    public ResponseEntity<DadosDetalhamentoAluno> detalhar(@PathVariable Long id) {
         return ResponseEntity.ok(service.detalharAluno(id));
 
     }
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAnyRole('ADMIN')")
-    public ResponseEntity<Void> excluirAluno (@PathVariable Long id){
+    public ResponseEntity<Void> excluir (@PathVariable Long id){
        service.excluirAluno(id);
         return ResponseEntity.noContent().build();
     }
