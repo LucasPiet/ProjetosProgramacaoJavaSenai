@@ -121,7 +121,7 @@ paths:
     put:
       tags:
         - usuario-controller
-      operationId: atualizaSenharUsuario
+      operationId: atualizaUsuario
       requestBody:
         content:
           application/json:

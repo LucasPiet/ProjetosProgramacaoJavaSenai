@@ -1,6 +1,5 @@
 package br.com.senai.autoescolas164.adapter.in.controller;
 
-import br.com.senai.autoescolas164.adapter.in.controller.request.usuario.DadosAtualizarPerfilUsuario;
 import br.com.senai.autoescolas164.adapter.in.controller.request.usuario.DadosAtualizarSenhaUsuario;
 import br.com.senai.autoescolas164.adapter.in.controller.request.usuario.DadosCadastroUsuario;
 import br.com.senai.autoescolas164.adapter.in.controller.response.usuario.DadosDetalhamentoUsuario;
@@ -53,22 +52,15 @@ public class UsuarioController {
 
     }
 
-    @PutMapping("/senha")
+    @PutMapping
     @PreAuthorize("hasAnyRole('ADMIN')")
-    public ResponseEntity<DadosDetalhamentoUsuario> atualizaSenharUsuario
+    public ResponseEntity<DadosDetalhamentoUsuario> atualizaUsuario
             (@RequestBody @Valid DadosAtualizarSenhaUsuario dados) {
         return ResponseEntity.ok(service.atulizarSenhaUsuario(dados));
 
 
     }
-    @PutMapping("/perfil")
-    @PreAuthorize("hasAnyRole('ADMIN')")
-    public ResponseEntity<DadosDetalhamentoUsuario> atualizaPerfilUsuario
-            (@RequestBody @Valid DadosAtualizarPerfilUsuario dados) {
-        return ResponseEntity.ok(service.atulizarPerfilUsuario(dados));
 
-
-    }
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAnyRole('ADMIN')")
